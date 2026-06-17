@@ -1,28 +1,174 @@
-/* Tối ưu hóa cỡ chữ nền tảng cho người lớn tuổi tiếp cận */
 body {
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Đảm bảo các khối văn bản thô hiển thị xuống dòng an toàn không bị tràn khung */
 pre {
-    white-space: pre-wrap;
-    word-break: break-all;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
-/* Tùy chỉnh thanh cuộn danh sách lịch sử mượt mà hơn trên giao diện di động */
+.tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+.active-tab {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.18);
+}
+
+.inactive-tab {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.inactive-tab:hover {
+  background: #e2e8f0;
+}
+
+.sample-btn {
+  text-align: left;
+  background: #f1f5f9;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  font-weight: 700;
+  color: #334155;
+}
+
+.sample-btn:hover {
+  background: #e2e8f0;
+}
+
+.lib-filter-btn {
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.lib-filter-btn:hover {
+  background: #e2e8f0;
+}
+
+.active-filter {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+}
+
+.badge {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 900;
+  border-radius: 999px;
+  border-width: 1px;
+}
+
 #history-list::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
+
 #history-list::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 4px;
+  background: #f1f5f9;
+  border-radius: 4px;
 }
+
 #history-list::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 4px;
 }
+
 #history-list::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+  background: #94a3b8;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.rescue-card {
+  background: #fff1f2;
+  border: 2px solid #fecdd3;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.rescue-title {
+  color: #991b1b;
+  font-weight: 900;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.rescue-option-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+@media (min-width: 640px) {
+  .rescue-option-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rescue-btn {
+  background: white;
+  border: 1px solid #fecaca;
+  color: #7f1d1d;
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  font-weight: 800;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.rescue-btn:hover {
+  background: #ffe4e6;
+}
+
+.rescue-detail {
+  margin-top: 1rem;
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.hotline-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: #f8fafc;
+}
+
+.hotline-number {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #1d4ed8;
 }
