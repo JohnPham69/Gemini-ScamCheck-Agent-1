@@ -289,8 +289,6 @@ async function analyzeMessage() {
 // ==========================================
 
 async function callGemini(message) {
-  console.log("Đang gửi tin nhắn lên Cloudflare Worker để phân tích...");
-
   const res = await fetch(PROXY_API_URL, {
     method: "POST",
     headers: {
@@ -309,14 +307,25 @@ async function callGemini(message) {
     throw new Error(`Worker lỗi ${res.status}: ${raw}`);
   }
 
-  try {
-    return JSON.parse(raw);
-  } catch (err) {
-    const jsonText = extractJsonObject(raw);
-    return JSON.parse(jsonText);
-  }
-}
+  let data;
 
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    data = JSON.parse(extractJsonObject(raw));
+  }
+
+  // Worker returns direct result
+  if (data && data.risk) return data;
+
+  // Worker returns wrapped result
+  if (data && data.data && data.data.risk) return data.data;
+
+  // Worker returns result field
+  if (data && data.result && data.result.risk) return data.result;
+
+  throw new Error("Dữ liệu Worker trả về không hợp lệ: " + raw);
+}
 function extractJsonObject(text) {
   const cleaned = String(text)
     .replace(/```json/gi, "")
